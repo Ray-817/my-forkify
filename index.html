@@ -8,7 +8,6 @@
       href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
       rel="stylesheet"
     />
-    <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon" />
 
     <link rel="stylesheet" href="src/sass/main.scss" />
 
@@ -39,27 +38,19 @@
           <ul class="nav__list">
             <li class="nav__item">
               <button class="nav__btn nav__btn--add-recipe">
-                <svg class="nav__icon">
-                  <use href="src/img/icons.svg#icon-edit"></use>
-                </svg>
+                <i data-feather="edit"></i>
                 <span>Add recipe</span>
               </button>
             </li>
             <li class="nav__item">
               <button class="nav__btn nav__btn--bookmarks">
-                <svg class="nav__icon">
-                  <use href="src/img/icons.svg#icon-bookmark"></use>
-                </svg>
+                <i data-feather="bookmark"></i>
                 <span>Bookmarks</span>
               </button>
               <div class="bookmarks">
                 <ul class="bookmarks__list">
                   <div class="message">
-                    <div>
-                      <svg>
-                        <use href="src/img/icons.svg#icon-smile"></use>
-                      </svg>
-                    </div>
+                    <i data-feather="smile"></i>
                     <p>
                       No bookmarks yet. Find a nice recipe and bookmark it :)
                     </p>
@@ -138,9 +129,7 @@
       <div class="recipe">
         <div class="message">
           <div>
-            <svg>
-              <use href="src/img/icons.svg#icon-smile"></use>
-            </svg>
+            <i data-feather="smile"></i>
           </div>
           <p>Start by searching for a recipe or an ingredient. Have fun!</p>
         </div>
@@ -320,9 +309,7 @@
         </div>
 
         <button class="btn upload__btn">
-          <svg>
-            <use href="src/img/icons.svg#icon-upload-cloud"></use>
-          </svg>
+          <i data-feather="upload-cloud"></i>
           <span>Upload</span>
         </button>
       </form>

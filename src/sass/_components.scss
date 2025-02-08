@@ -29,10 +29,11 @@
   font-size: 1.5rem;
   font-weight: 600;
 
-  i {
+  i,
+  svg {
     height: 2.25rem;
     width: 2.25rem;
-    fill: currentColor;
+    stroke: currentColor;
   }
 }
 
@@ -200,7 +201,7 @@
   svg {
     height: 3rem;
     width: 3rem;
-    fill: $color-primary;
+    stroke: $color-primary;
     transform: translateY(-0.3rem);
   }
 
