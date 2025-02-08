@@ -4,7 +4,7 @@ import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultView from './views/resultView.js';
 import paginationView from './views/paginationView.js';
-import bookmarkView from './views/BookmarkView.js';
+import bookmarkView from './views/bookmarkView.js';
 import addRecipeView from './views/addRecipeView.js';
 import { TIMEOUT_SEC_UPLOAD } from './config.js';
 import 'core-js/stable';
