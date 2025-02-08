@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="src/sass/main.scss" />
 
+    <script src="https://unpkg.com/feather-icons"></script>
+
     <script defer type="module" src="src/js/controller.js"></script>
 
     <title>forkify // Search over 1,000,000 recipes</title>
@@ -28,9 +30,7 @@
             placeholder="Search over 1,000,000 recipes..."
           />
           <button class="btn search__btn">
-            <svg class="search__icon">
-              <use href="src/img/icons.svg#icon-search"></use>
-            </svg>
+            <i data-feather="search"></i>
             <span>Search</span>
           </button>
         </form>
@@ -327,5 +327,8 @@
         </button>
       </form>
     </div>
+    <script>
+      feather.replace();
+    </script>
   </body>
 </html>
