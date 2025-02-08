@@ -1,0 +1,25 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "Search over 1,000,000 recipes",
+  "defult": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "rmdir /s /q .parcel-cache && parcel index.html",
+    "build": "rmdir /s /q .parcel-cache && parcel build index.html --dist-dir ./dist"
+  },
+  "author": "Ray",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.13.3",
+    "parcel": "^2.13.3",
+    "parcel-transformer-svg-sprite": "^2.0.1",
+    "sass": "^1.83.0",
+    "svgo": "^3.3.2"
+  },
+  "dependencies": {
+    "core-js": "^3.39.0",
+    "fraction.js": "^5.2.1",
+    "regenerator-runtime": "^0.14.1"
+  }
+}
