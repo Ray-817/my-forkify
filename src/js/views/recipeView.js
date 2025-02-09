@@ -1,4 +1,3 @@
-import icons from '../../../public/icons/icons.svg';
 import Fraction from 'fraction.js';
 
 import View from './View.js';
@@ -43,18 +42,14 @@ class RecipeView extends View {
 
         <div class="recipe__details">
           <div class="recipe__info">
-            <svg class="recipe__info-icon">
-              <use href="${icons}#icon-clock"></use>
-            </svg>
+            <i data-feather="clock" class="recipe__info-icon"></i>
             <span class="recipe__info-data recipe__info-data--minutes">${
               recipe.cookingTime
             }</span>
             <span class="recipe__info-text">minutes</span>
           </div>
           <div class="recipe__info">
-            <svg class="recipe__info-icon">
-              <use href="${icons}#icon-users"></use>
-            </svg>
+            <i data-feather="user" class="recipe__info-icon"></i>
             <span class="recipe__info-data recipe__info-data--people">${
               recipe.servings
             }</span>
@@ -64,32 +59,24 @@ class RecipeView extends View {
               <button data-update="${
                 recipe.servings - 1
               }" class="btn--tiny btn--decrease-servings">
-                <svg>
-                  <use href="${icons}#icon-minus-circle"></use>
-                </svg>
+                <i data-feather="minus-circle"></i>
               </button>
               <button data-update="${
                 recipe.servings + 1
               }" class="btn--tiny btn--increase-servings">
-                <svg>
-                  <use href="${icons}#icon-plus-circle"></use>
-                </svg>
+                <i data-feather="plus-circle"></i>
               </button>
             </div>
           </div>
 
           <div class="recipe__user-generated ${this._data.key ? '' : 'hidden'}">
-            <svg>
-              <use href="${icons}#icon-user"></use>
-            </svg>  
+            <i data-feather="user"></i>
           </div>
 
           <button class="btn--round btn--bookmark ">
-            <svg class="">
-              <use href="${icons}#icon-bookmark${
-      recipe.bookmarked ? '-fill' : ''
-    }"></use>
-            </svg>
+            <i data-feather="bookmark" class="${
+              recipe.bookmarked ? 'btn--round__marked' : ''
+            }"></i>
           </button>
         </div>
 
@@ -115,9 +102,7 @@ class RecipeView extends View {
             target="_blank"
           >
             <span>Directions</span>
-            <svg class="search__icon">
-              <use href="${icons}#icon-arrow-right"></use>
-            </svg>
+            <i data-feather="arrow-right" class="search__icon"></i>
           </a>
         </div>`;
   }
@@ -125,9 +110,7 @@ class RecipeView extends View {
   _generateMarkupIngridients(ing) {
     return `
             <li class="recipe__ingredient">
-              <svg class="recipe__icon">
-                <use href="${icons}#icon-check"></use>
-              </svg>
+              <i data-feather="check" class="recipe__icon"></i>
               <div class="recipe__quantity">${
                 ing.quantity ? new Fraction(ing.quantity).toFraction(true) : ''
               }</div>

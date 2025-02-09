@@ -1,12 +1,15 @@
 import View from './View';
 // import icons from '../../img/icons.svg';
-import icons from '../../../public/icons/icons.svg';
 
 export default class PreviewView extends View {
   _parentElement = document.querySelectorAll('*');
 
   _generateMarkup() {
-    return this._data.map(d => this._generateMarkupPreview(d)).join('');
+    const previewmarkup = this._data
+      .map(d => this._generateMarkupPreview(d))
+      .join('');
+    // console.log(previewmarkup);
+    return previewmarkup;
   }
 
   _generateMarkupPreview(result) {
@@ -26,9 +29,7 @@ export default class PreviewView extends View {
                 <div class="preview__user-generated ${
                   result.key ? '' : 'hidden'
                 }">
-                  <svg>
-                    <use href="${icons}#icon-user"></use>
-                  </svg>
+                  <i data-feather="user"></i>
                 </div>
             </div> 
             </a>

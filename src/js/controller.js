@@ -9,8 +9,9 @@ import addRecipeView from './views/addRecipeView.js';
 import { TIMEOUT_SEC_UPLOAD } from './config.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+import { async } from 'regenerator-runtime';
 
-if (module.hot) module.hot.accept();
+// if (module.hot) module.hot.accept();
 
 // 5ed6604591c37cdc054bc90b
 const controlRecipes = async function () {
@@ -23,8 +24,11 @@ const controlRecipes = async function () {
     // console.log(recipeView);
     recipeView.renderSpinner();
 
-    resultView.update(model.getSearchResultsPage());
-    bookmarkView.update(model.state.bookmarks);
+    // resultView.update(model.getSearchResultsPage());
+    resultView.render(model.getSearchResultsPage());
+
+    // bookmarkView.update(model.state.bookmarks);
+    bookmarkView.render(model.state.bookmarks);
     // debugger;
 
     // loading recipes
@@ -35,6 +39,7 @@ const controlRecipes = async function () {
   } catch (error) {
     // redering errors
     recipeView.renderError();
+    console.log(error);
   }
 };
 
@@ -70,7 +75,8 @@ const controlPagination = function (page) {
 const controlServings = function (newServings) {
   model.updateServing(newServings);
 
-  recipeView.update(model.state.recipe);
+  recipeView.render(model.state.recipe);
+  // recipeView.update(model.state.recipe);
 };
 
 const controlAddBookmark = function () {
@@ -79,7 +85,8 @@ const controlAddBookmark = function () {
   } else {
     model.deleteBookmark(model.state.recipe.id);
   }
-  recipeView.update(model.state.recipe);
+  // recipeView.update(model.state.recipe);
+  recipeView.render(model.state.recipe);
 
   bookmarkView.render(model.state.bookmarks);
 };
@@ -112,7 +119,16 @@ const contrlUploadRecipe = async function (newRecipe) {
   }
 };
 
+const addObserverOn = function () {
+  bookmarkView.addObserver();
+  paginationView.addObserver();
+  recipeView.addObserver();
+  addRecipeView.addObserver();
+  searchView.addObserver();
+};
+
 const init = function () {
+  addObserverOn();
   bookmarkView.addHandlerRender(controlInitBookmarks);
   recipeView.addHandlerRender(controlRecipes);
   searchView.addHandlerSearch(controlSerach);
