@@ -96,4 +96,10 @@
     grid-column: 1 / -1;
     justify-self: center;
   }
+
+  svg {
+    height: 1.75rem;
+    width: 1.75rem;
+    fill: currentColor;
+  }
 }
