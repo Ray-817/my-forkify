@@ -1,4 +1,4 @@
-import feather from 'feather-icons';
+import icons from 'url:../../img/icons.svg';
 
 export default class View {
   _data;
@@ -6,7 +6,7 @@ export default class View {
   _renderMessage(mess, func) {
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', func(mess));
-    console.error(mess);
+    // console.error(mess);
   }
 
   _clear() {
@@ -16,7 +16,9 @@ export default class View {
   _generateMarkupError(error = this._errorMessage) {
     return `<div class="error">
                   <div>
-                    <i data-feather="alert-triangle"></i>
+                    <svg>
+                      <use href="${icons}#icon-alert-triangle"></use>
+                    </svg>
                   </div>
                   <p>${error}</p>
                 </div>`;
@@ -25,7 +27,9 @@ export default class View {
   _generateMarkupSuccess(mess = this._succMessage) {
     return `<div class="error">
                   <div>
-                    <i data-feather="alert-smile"></i>
+                    <svg>
+                      <use href="${icons}#icon-smile"></use>
+                    </svg>
                   </div>
                   <p>${mess}</p>
                 </div>`;
@@ -33,10 +37,10 @@ export default class View {
 
   renderSpinner() {
     const markup = `<div class="spinner">
-                      <div>
-                        <i data-feather="loader" class="spinner"></i>
-                      </div>
-                    </div>`;
+              <svg>
+                <use href="${icons}#icon-loader"></use>
+              </svg>
+            </div>`;
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
@@ -66,81 +70,28 @@ export default class View {
   }
 
   update(data) {
-    // debugger;
     this._data = data;
-    console.log(data);
     const newMarkup = this._generateMarkup(this._data);
 
     const newDom = document.createRange().createContextualFragment(newMarkup);
     const newElements = Array.from(newDom.querySelectorAll('*'));
-
-    console.log(this._parentElement);
     const curElements = Array.from(this._parentElement.querySelectorAll('*'));
-    console.log(newElements);
-    console.log(curElements);
-    if (false)
-      newElements.forEach((newEl, i) => {
-        const curEl = curElements[i];
-        // console.log(`old`);
-        // console.log(newEl);
-        // console.log(`new`);
-        // console.log(curEl);
-        // console.log(
-        //   `////////////////////////////////////////////////////////////////////`
-        // );
-        if (
-          (newEl.tagName === 'i' || newEl.tagName === 'svg') &&
-          (curEl.tagName === 'i' || curEl.tagName === 'svg')
-        ) {
-          return;
-        }
 
-        if (
-          newEl.firstChild?.nodeValue.trim() !== '' &&
-          !newEl.isEqualNode(curEl)
-        ) {
-          curEl.textContent = newEl.textContent;
-        }
+    newElements.forEach((newEl, i) => {
+      const curEl = curElements[i];
 
-        if (!newEl.isEqualNode(curEl)) {
-          Array.from(newEl.attributes).forEach(attr => {
-            curEl.setAttribute(attr.name, attr.value);
-          });
-        }
-      });
-    // console.log(
-    //   `over!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1`
-    // );
-  }
+      if (
+        newEl.firstChild?.nodeValue.trim() !== '' &&
+        !newEl.isEqualNode(curEl)
+      ) {
+        curEl.textContent = newEl.textContent;
+      }
 
-  addObserver(parentEl = this._parentElement) {
-    // console.dir(parentEl);
-    const observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        // console.log(mutation);
-        // console.dir(parentEl);
-
-        // console.dir(mutation.addedNodes);
-
-        mutation.addedNodes.forEach(node => {
-          if (node.nodeType === 1) {
-            const icons = node.querySelectorAll('i[data-feather]');
-            if (icons.length > 0) {
-              // console.log(icons);
-              // console.log(`Detected icons: ${icons.length}`);
-              requestAnimationFrame(() => {
-                feather.replace({ selector: `.${parentEl} i` });
-              });
-            }
-          }
+      if (!newEl.isEqualNode(curEl)) {
+        Array.from(newEl.attributes).forEach(attr => {
+          curEl.setAttribute(attr.name, attr.value);
         });
-      });
-    });
-    observer.observe(parentEl, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['data-feather'],
+      }
     });
   }
 }

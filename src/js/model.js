@@ -39,7 +39,6 @@ export const loadRecipe = async function (id) {
     const recipeData = await AJAX(`${API_URL}/${id}?key=${API_KEY}`);
 
     state.recipe = createRecipeObject(recipeData);
-    // console.log(state.recipe);
 
     if (state.bookmarks.some(bookmark => bookmark.id === state.recipe.id)) {
       state.recipe.bookmarked = true;
@@ -66,20 +65,17 @@ export const loadSearchResults = async function (query) {
         ...(recipe.key && { key: recipe.key }),
       };
     });
-    // console.log(state.search.results);
   } catch (error) {
     throw error;
   }
 };
 
 export const getSearchResultsPage = function (page = state.search.page) {
-  // state.search.page
   state.search.page = page;
 
   const start = (page - 1) * state.search.resultsPerPage;
   const end = start + state.search.resultsPerPage;
 
-  // console.log(`${state.search.results.slice(start, end)}`);
   return state.search.results.slice(start, end);
 };
 
@@ -96,15 +92,12 @@ const presisBookmarks = function () {
 };
 
 export const addBookmark = function (recipe) {
-  // console.log(`add`);
   state.bookmarks.push(recipe);
   if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
   presisBookmarks();
 };
 
 export const deleteBookmark = function (id) {
-  // console.log(state.recipe);
-  // console.log('delete');
   const index = state.bookmarks.findIndex(el => el.id === id);
   state.bookmarks.splice(index, 1);
   if (id === state.recipe.id) state.recipe.bookmarked = false;
@@ -137,8 +130,6 @@ export const uploadRecipt = async function (newRecipe) {
         return { quantity: quantity ? +quantity : null, unit, description };
       });
 
-    // console.log(newRecipe);
-
     const uploadRecipe = {
       title: newRecipe.title,
       source_url: newRecipe.sourceUrl,
@@ -149,10 +140,8 @@ export const uploadRecipt = async function (newRecipe) {
       ingredients,
       bookmarked: true,
     };
-    console.log(uploadRecipe);
 
     const sendBackData = await AJAX(`${API_URL}?key=${API_KEY}`, uploadRecipe);
-    // console.log(sendBackData);
     state.recipe = createRecipeObject(sendBackData);
 
     addBookmark(state.recipe);

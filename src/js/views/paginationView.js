@@ -1,4 +1,5 @@
 import View from './View.js';
+import icons from '../../img/icons.svg';
 
 class PaginationView extends View {
   _parentElement = document.querySelector('.pagination');
@@ -26,7 +27,9 @@ class PaginationView extends View {
         data.page + 1
       }" class="btn--inline pagination__btn--next">
         <span>Page ${data.page + 1}</span>
-        <i data-feather="arrow-right" class="search__icon"></i>
+        <svg class="search__icon">
+            <use href="${icons}#icon-arrow-right"></use>
+        </svg>
       </button>
       `;
     }
@@ -38,7 +41,9 @@ class PaginationView extends View {
         <button data-goto="${
           data.page - 1
         }" class="btn--inline pagination__btn--prev">
-          <i data-feather="arrow-left" class="search__icon"></i>
+          <svg class="search__icon">
+            <use href="${icons}#icon-arrow-left"></use>
+          </svg>
           <span>Page ${allPages - 1}</span>
         </button>
       `;
@@ -49,7 +54,9 @@ class PaginationView extends View {
       <button data-goto="${
         data.page - 1
       }" class="btn--inline pagination__btn--prev">
-               <i data-feather="arrow-left" class="search__icon"></i>
+        <svg class="search__icon">
+          <use href="${icons}#icon-arrow-left"></use>
+        </svg>
         <span>Page ${data.page - 1}</span>
       </button>
 
@@ -57,7 +64,9 @@ class PaginationView extends View {
         data.page + 1
       }" class="btn--inline pagination__btn--next">
         <span>Page ${data.page + 1}</span>
-        <i data-feather="arrow-right" class="search__icon"></i>
+        <svg class="search__icon">
+          <use href="${icons}#icon-arrow-right"></use>
+        </svg>
       </button>`;
     }
     return markup;
