@@ -115,7 +115,7 @@
   svg {
     height: 2.5rem;
     width: 2.5rem;
-    stroke: #fff;
+    fill: #fff;
   }
 
   &__marked {
@@ -133,7 +133,7 @@
   svg {
     height: 100%;
     width: 100%;
-    stroke: $color-primary;
+    fill: $color-primary;
     transition: all 0.3s;
   }
 
@@ -178,7 +178,7 @@
   svg {
     height: 6rem;
     width: 6rem;
-    stroke: $color-primary;
+    fill: $color-primary;
     animation: rotate 2s infinite linear;
   }
 }
@@ -204,7 +204,7 @@
   svg {
     height: 3rem;
     width: 3rem;
-    stroke: $color-primary;
+    fill: $color-primary;
     transform: translateY(-0.3rem);
   }
 
