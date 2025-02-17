@@ -1,9 +1,0 @@
-{
-  "extends": "@parcel/config-default",
-  "transformers": {
-    "./src/img/icons.svg": ["parcel-transformer-svg-sprite"]
-  },
-  "packagers": {
-    "./index.html": "parcel-packager-svg-sprite"
-  }
-}
