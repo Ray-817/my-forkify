@@ -1,6 +1,5 @@
 import View from './View';
-// import icons from '../../img/icons.svg';
-import icons from '../../../public/icons/icons.svg';
+import icons from '../../img/icons.svg';
 
 export default class PreviewView extends View {
   _parentElement = document.querySelectorAll('*');
@@ -11,8 +10,7 @@ export default class PreviewView extends View {
 
   _generateMarkupPreview(result) {
     const id = window.location.hash.slice(1);
-    // debugger;
-    // if (this._data.result.key) console.log(this._data);
+
     return ` <li class="preview">
             <a class="preview__link ${
               result.id === id ? 'preview__link--active' : ''

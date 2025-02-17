@@ -1,5 +1,4 @@
-// import icons from 'url:../../img/icons.svg';
-import icons from '../../../public/icons/icons.svg';
+import icons from 'url:../../img/icons.svg';
 
 export default class View {
   _data;
@@ -7,7 +6,7 @@ export default class View {
   _renderMessage(mess, func) {
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', func(mess));
-    console.error(mess);
+    // console.error(mess);
   }
 
   _clear() {
@@ -80,7 +79,7 @@ export default class View {
 
     newElements.forEach((newEl, i) => {
       const curEl = curElements[i];
-      // console.log(`${newEl} ${newEl.isEqualNode(curEl)}`);
+
       if (
         newEl.firstChild?.nodeValue.trim() !== '' &&
         !newEl.isEqualNode(curEl)

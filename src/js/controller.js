@@ -16,16 +16,13 @@ if (module.hot) module.hot.accept();
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
-    // console.log(id);
     if (!id) return;
 
     // spinner
-    // console.log(recipeView);
     recipeView.renderSpinner();
 
     resultView.update(model.getSearchResultsPage());
     bookmarkView.update(model.state.bookmarks);
-    // debugger;
 
     // loading recipes
     await model.loadRecipe(id);
@@ -53,15 +50,12 @@ const controlSerach = async function () {
 
     paginationView.render(model.state.search);
   } catch (error) {
-    console.error(error + '⛔⛔⛔');
+    // console.error(error + '⛔⛔⛔');
     resultView.renderError();
   }
 };
 
 const controlPagination = function (page) {
-  // console.log(`this is controlPagination`);
-  // model.state.search.page = page;
-  // console.log(model.state.search.page);
   resultView.render(model.getSearchResultsPage(page));
 
   paginationView.render(model.state.search);
@@ -107,7 +101,7 @@ const contrlUploadRecipe = async function (newRecipe) {
       addRecipeView.toggleWindow();
     }, TIMEOUT_SEC_UPLOAD);
   } catch (error) {
-    console.error('⛔⛔⛔' + error);
+    // console.error('⛔⛔⛔' + error);
     addRecipeView.renderError();
   }
 };
